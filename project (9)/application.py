@@ -6,15 +6,13 @@ teams_copy = copy.deepcopy(constants.TEAMS)
 players_copy = copy.deepcopy(constants.PLAYERS)
 teams_filled = dict()
 
-
 def clean_data():
     for player in players_copy:
-        player_height = player["height"].split()
-        player_height.remove("inches")
-        player_height = (map(int, player_height))
-        False if player["experience"] == 'No' else True
-    for guardian in players_copy:
-        guardians_list = guardian["guardians"].split()
+        player["height"] = int(player["height"][0:2])
+        if player["experience"] == "YES":
+            player["experience"] = True
+        elif player["experience"] == "NO":
+            player["experience"] = False
 
 
 def greeting_screen():
